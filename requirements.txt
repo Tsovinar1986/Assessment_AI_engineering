@@ -1,0 +1,8 @@
+pip install gradio 
+pip install websocket 
+pip install send
+pip install pdfplumber
+pip install supabase
+pip install openai
+pip install groq
+
