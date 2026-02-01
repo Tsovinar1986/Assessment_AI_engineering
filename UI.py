@@ -33,12 +33,16 @@ CHUNKS = []
 # ================= PDF =================
 def extract_pdf_text(file):
     text = ""
-    with pdfplumber.open(file.name) as pdf:
-        for page in pdf.pages:
-            t = page.extract_text()
-            if t:
+    try:
+        with pdfplumber.open(file.name) as pdf:
+             for page in pdf.pages:
+              t = page.extract_text()
+              if t:
                 text += t + "\n"
+    except Exception as e:
+        print("PDF extraction warning:", e)
     return text
+
 
 # ================= CHUNKING =================
 def chunk_text(text, size=1000, overlap=200):
